@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <title>Giphy Generator!</title>
+
+    <!-- Link to the jQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+
+    <!-- CSS Style Sheets: 1) Bootstrap, 2) Custom -->
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <div class="text-center bg-primary" style="border-radius: 5px">
+        <h1 style="padding: 25px">Giphy Generator!</h1>
+      </div>
+
+      <!-- Row for Buttons and Button Adding Form -->
+      <div class="row">
+
+        <!-- Panel for List of Giphy Buttons -->
+        <div class="col-md-7">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3>Giphy Buttons</h3>
+            </div>
+            <div class="panel-body">
+              <div id="buttons-list"></div>
+            </div>
+          </div> <!-- End of Panel --> 
+        </div> <!-- End of col-md-7 -->
+
+        <!-- Panel for Adding Giphy Button Form -->
+        <div class="col-md-5">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3>Add Giphies</h3>
+            </div>
+            <div class="panel-body">
+              Form goes here
+            </div>
+          </div> <!-- End of Panel --> 
+        </div> <!-- End of col-md-5 -->
+
+      </div> <!-- End of Row -->
+      
+      <!-- Giphy Results Go Here -->
+      <div class="row">
+        <div id="giphy-results"></div>
+      </div>
+
+    </div> <!--End of Container-->
+
+    <!-- Exertnal JavaScript Link -->
+  	<script src="assets/js/app.js"></script>
+    
+  </body>
+</html>
