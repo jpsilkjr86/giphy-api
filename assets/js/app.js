@@ -97,24 +97,66 @@ function storeDataInButton(thisBtn) {
 	});
 }
 
+function displayGiphies (giphiesAry) {
+	console.log(giphiesAry);
+
+	// loops through array of giphies
+	$.each(giphiesAry, function(i){
+		// for the sake of encapsulation
+		var thisImg = giphiesAry[i].images;
+
+		var giphyWrapper = $('<div>');
+		giphyWrapper.addClass('giphy-wrapper');
+
+		var ratingsText = $('<p>');
+		ratingsText.text('Rating: ' + giphiesAry[i].rating)
+				.appendTo(giphyWrapper);
+
+		var giphyImg = $('<img>');
+		giphyImg.attr('alt', giphiesAry[i].bitly_gif_url)
+				.attr('src', thisImg.fixed_height_still.url)
+				.addClass('giphy-img')
+				.data('motion_state', thisImg.fixed_height.url)
+				.data('still_state', thisImg.fixed_height_still.url)
+				.data('current_state', 'still')
+				.appendTo(giphyWrapper);
+
+		$('#giphy-results').append(giphyWrapper);
+	});	
+}
+
+function changeImgState(img) {
+	// sets conditions for changing states
+	if (img.data('current_state') === 'still') {
+		img.attr('src', img.data('motion_state'))
+			.data('current_state', 'motion');
+	}
+	else if (img.data('current_state') === 'motion') {
+		img.attr('src', img.data('still_state'))
+			.data('current_state', 'still');
+	}	
+}
 
 
 
 $(document).ready(function(){
 
-	var buttonNameArray = ['Bernie Sanders', 'Cats', 'Dogs', 'Bears'];
+	var buttonNameArray = ['Bernie Sanders', 'Ostriches'];
 
 	// loops through array and prints each button
 	$.each(buttonNameArray, function(i){
 		printButton(buttonNameArray[i]);
 	});
 
-	$('.giphy-button').click(function(){
-		console.log('name:', $(this).val());
-		console.log('data:', $(this).data());
+	$(document).on('click', '.giphy-button', function(){
+		// calls function and sends it giphy data
+		displayGiphies($(this).data().giphies);
 	});
 
-
+	$(document).on('click', '.giphy-img', function(){
+		// calls function and sends it this clicked image
+		changeImgState($(this));
+	});
 
 
 }); // end of document ready
