@@ -11,7 +11,7 @@ TITLE: Giphy Generator
 		c. panel with form for adding buttons
 		d. empty div at the bottom for appending giphies
 	II. Declare variables
-		a. buttonArray
+		a. buttonNameArray
 	III. App flow
 		a. webpage loads
 			-displays initial HTML (header, button panel, form panel)
@@ -55,18 +55,64 @@ TITLE: Giphy Generator
 					$(this).attr('src', $(this).data('stillState'))
 						.data('currentState', 'still-state');
 				}
-
-
-
 	
 */  //END OF PSEUDOCODE
+
+// GLOBAL VARIABLES
+
+
+// GLOBAL FUNCTIONS
+
+function printButton(btnName) {
+	// trims the white space before and after the button name
+	btnName = btnName.trim();
+
+	// appends button on the DOM
+	var newBtn = $('<button>');
+	newBtn.addClass('giphy-button btn btn-primary')
+		.text(btnName)
+		.attr('value', btnName.replace(/\s+/g, '+')) // value equals btnName with spaces replaced by +'s
+		.appendTo('#buttons-list');
+
+	// sends the button to storeDataInButton() to store giphy data onto it
+	storeDataInButton(newBtn);
+}
+
+// this function makes an ajax request and stores the response data onto the DOM button itself
+function storeDataInButton(thisBtn) {
+	// sets queryTerm as the value of the received button argument, i.e. the button name
+	var queryTerm = thisBtn.val();	
+	var giphyApiKey = 'dc6zaTOxFJmzC';
+
+	var queryURL = 'http://api.giphy.com/v1/gifs/search?q=' + queryTerm 
+					+ '&api_key=' + giphyApiKey + '&limit=2';
+	// AJAX request
+	$.ajax({
+		method: "GET",
+		url: queryURL
+	}).done(function(r){
+		// the promise function simply stores the relevant response data directly onto 
+		// the DOM element itself.
+		thisBtn.data('giphies', r.data);
+	});
+}
+
 
 
 
 $(document).ready(function(){
 
+	var buttonNameArray = ['Bernie Sanders', 'Cats', 'Dogs', 'Bears'];
 
+	// loops through array and prints each button
+	$.each(buttonNameArray, function(i){
+		printButton(buttonNameArray[i]);
+	});
 
+	$('.giphy-button').click(function(){
+		console.log('name:', $(this).val());
+		console.log('data:', $(this).data());
+	});
 
 
 
