@@ -6,3 +6,18 @@ button {
 	display: inline-block;
 	margin: 15px;
 }
+
+@media screen and (max-width: 768px) {
+	.panel {
+		margin-top: 8px;
+	}
+	.giphy-wrapper {
+		display: block;
+		margin: 5px auto 10px auto;
+		text-align: center;
+	}
+	.giphy-img {
+		display: block;
+		margin: auto;
+	}
+}

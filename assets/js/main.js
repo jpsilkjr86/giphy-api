@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	var topics = ['Bernie Sanders', 'Ostriches'];
+	var topics = ['Bernie Sanders', 'Princess Bride'];
 
 	// loops through array and prints each button
 	$.each(topics, function(i){

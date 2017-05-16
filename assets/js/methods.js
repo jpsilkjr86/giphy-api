@@ -25,7 +25,7 @@ function storeDataInButton(thisBtn) {
 
 	// query URL for the giphy API
 	var queryURL = 'http://api.giphy.com/v1/gifs/search?q=' + queryTerm 
-					+ '&api_key=' + giphyApiKey + '&limit=2';
+					+ '&api_key=' + giphyApiKey + '&limit=10';
 	// AJAX request
 	$.ajax({
 		method: "GET",
@@ -40,8 +40,9 @@ function storeDataInButton(thisBtn) {
 // function for displaying giphies stored in an array of giphy objects
 function displayGiphies (giphiesAry) {
 	$('#giphy-results').empty();
-	$('<p>').text('Click on an image and see what happens!').appendTo('#giphy-results');
-	console.log(giphiesAry);
+	$('<p>').addClass('text-center')
+			.text('Click on an image and see what happens!')
+			.appendTo('#giphy-results');
 
 	// loops through array of giphies
 	$.each(giphiesAry, function(i){
