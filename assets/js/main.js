@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
-	var topics = ['Bernie Sanders', 'Princess Bride'];
+	var topics = ['Princess Bride', 'Fresh Prince', 'Robin Williams', 'Bill Murray', 'Zoolander',
+	'Bernie Sanders', 'Tina Fey', 'Chapelle Show', 'Key and Peele', 'sup'];
 
 	// loops through array and prints each button
 	$.each(topics, function(i){
