@@ -3,9 +3,11 @@ $(document).ready(function(){
 	var topics = ['Princess Bride', 'Fresh Prince', 'Robin Williams', 'Bill Murray', 'Zoolander',
 	'Bernie Sanders', 'Tina Fey', 'Chapelle Show', 'Key and Peele', 'sup'];
 
-	// loops through array and prints each button
+	// loops through array, creates each button, prints it on the DOM and stores data onto it
 	$.each(topics, function(i){
-		printButton(topics[i]);
+		var newButton = createButton(topics[i]);
+		printButton(newButton);
+		storeDataInButton(newButton);
 	});
 
 	// event listener for clicking on buttons
@@ -33,6 +35,7 @@ $(document).ready(function(){
 
 		// pushes the new button onto the topics array. This isn't necessary for this program
 		// at this point but it might be helpful later on to have a running list of topics.
+		topics.push(userInpBtnName);
 
 		// calls printButton to put button on DOM and also to store giphy api data onto it 
 		printButton(userInpBtnName);

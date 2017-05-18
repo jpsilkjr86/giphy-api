@@ -2,7 +2,9 @@
 
 // prints a received button according to a string with its name.
 // also calls storeDataInButton() at the end.
-function printButton(btnName) {
+
+// creates and returns a button according to a button name
+function createButton(btnName) {
 	// trims the white space before and after the button name
 	btnName = btnName.trim();
 
@@ -10,14 +12,17 @@ function printButton(btnName) {
 	var newBtn = $('<button>');
 	newBtn.addClass('giphy-button btn btn-primary')
 		.text(btnName)
-		.attr('value', btnName.replace(/\s+/g, '+')) // value equals btnName with spaces replaced by +'s
-		.prependTo('#buttons-list');
+		.attr('value', btnName.replace(/\s+/g, '+')); // value equals btnName with spaces replaced by +'s
 
-	// sends the button to storeDataInButton() to store giphy data onto it
-	storeDataInButton(newBtn);
+	return newBtn;
 }
 
-// this function makes an ajax request and stores the response data onto the DOM button itself
+// prints button to the DOM
+function printButton(btn) {	
+	btn.prependTo('#buttons-list');
+}
+
+// this function makes an ajax request and stores giphy API response data onto the DOM button itself
 function storeDataInButton(thisBtn) {
 	// sets queryTerm as the value of the received button argument, i.e. the button name
 	var queryTerm = thisBtn.val();	
