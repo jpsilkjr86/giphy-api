@@ -29,7 +29,7 @@ function storeDataInButton(thisBtn) {
 	var giphyApiKey = 'dc6zaTOxFJmzC';
 
 	// query URL for the giphy API
-	var queryURL = 'http://api.giphy.com/v1/gifs/search?q=' + queryTerm 
+	var queryURL = 'https://api.giphy.com/v1/gifs/search?q=' + queryTerm 
 					+ '&api_key=' + giphyApiKey + '&limit=10';
 	// AJAX request
 	$.ajax({

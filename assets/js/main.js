@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 	var topics = ['Princess Bride', 'Fresh Prince', 'Robin Williams', 'Bill Murray', 'Zoolander',
-	'Bernie Sanders', 'Tina Fey', 'Chapelle Show', 'Key and Peele', 'sup'];
+	'Key and Peele'];
 
 	// loops through array, creates each button, prints it on the DOM and stores data onto it
 	$.each(topics, function(i){
@@ -37,8 +37,12 @@ $(document).ready(function(){
 		// at this point but it might be helpful later on to have a running list of topics.
 		topics.push(userInpBtnName);
 
-		// calls printButton to put button on DOM and also to store giphy api data onto it 
-		printButton(userInpBtnName);
+		// creates a button with userInpBtnName
+		var newUserBtn = createButton(userInpBtnName);
+
+		// calls printButton to put button on DOM and also to stores giphy api data onto it 
+		printButton(newUserBtn);
+		storeDataInButton(newUserBtn);
 	});
 
 }); // end of document ready
